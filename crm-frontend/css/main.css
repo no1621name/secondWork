@@ -1,0 +1,783 @@
+* {
+  scrollbar-width: thin;
+  font-family: "Open Sans", sans-serif;
+}
+*:focus {
+  outline: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #838383;
+  border: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.hilighted {
+  color: #9873FF;
+}
+
+.tip {
+  box-sizing: border-box;
+  display: inline-block;
+  width: max-content;
+  text-align: center;
+  background: #333;
+  padding: 7px 12px;
+  position: absolute;
+  color: #fff;
+  font-size: 12px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s all linear;
+  border: none;
+  z-index: 2;
+}
+.tip span {
+  text-decoration: underline;
+}
+.tip::after {
+  content: "";
+  position: absolute;
+  top: 99%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.warning {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 14px;
+  color: #F06A4D;
+  max-width: 255px;
+  text-align: center;
+}
+
+.close__btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 29px;
+  height: 29px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+.close__btn::after, .close__btn::before {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 17px;
+  width: 2px;
+  background-color: #9c9aa3;
+}
+.close__btn::after {
+  transform: rotate(45deg);
+}
+.close__btn::before {
+  transform: rotate(-45deg);
+}
+.close__btn:hover {
+  opacity: 1;
+}
+
+.loading {
+  border: 8px solid transparent;
+  border-top: 8px solid #9873FF;
+  border-bottom: 8px solid #9873FF;
+  border-right: 8px solid #9873FF;
+  border-radius: 50%;
+  height: 72px;
+  width: 72px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  box-shadow: 0px 9.03012px 27.0904px rgba(176, 190, 197, 0.32), 0px 3.38629px 5.64383px rgba(176, 190, 197, 0.32);
+  padding: 20px;
+  z-index: 2;
+  position: relative;
+}
+header .logo {
+  color: #fff;
+  background: #9873FF;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  padding: 10px;
+  width: 50px;
+  border-radius: 50%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+header input {
+  margin-left: 50px;
+  border: 1px solid rgba(51, 51, 51, 0.2);
+  padding: 12px 16px;
+  width: 580px;
+  color: #B0B0B0;
+}
+header input:focus {
+  outline: 0;
+}
+
+main {
+  background: #E5E5E5;
+  position: relative;
+  min-height: calc(100% - 132px);
+}
+main .container {
+  padding: 70px 0;
+}
+main .container h4 {
+  color: #333333;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 33px;
+  margin-top: 0px;
+}
+main .container .table {
+  scrollbar-width: none;
+}
+main .container .table::-webkit-scrollbar {
+  display: none;
+}
+main .container .table .table__headings {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 8.33% 23.33% 18.33% 18.33% 13.33% 16.67%;
+  justify-content: center;
+  align-items: center;
+}
+main .container .table .table__headings > span {
+  opacity: 0.8;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #B0B0B0;
+}
+main .container .table .table__headings .table__sort-methods {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  transition: color 0.2s linear;
+  position: relative;
+  z-index: 1;
+}
+main .container .table .table__headings .table__sort-methods img {
+  transition: transform 0.2s linear;
+  margin: 0 2px;
+  display: inline-block;
+  position: relative;
+  z-index: -1;
+}
+main .container .table .table__headings .table__sort-methods img:hover {
+  border: 1px solid #9873FF;
+}
+main .container .table .table__headings .table__sort-methods .table__sort-method__type {
+  color: #9873FF;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 14px;
+  position: relative;
+  z-index: -1;
+}
+main .container .table .table__headings .table__sort-methods:hover {
+  color: #333333;
+  cursor: pointer;
+}
+main .container .table .table__headings .table__sort-methods.active {
+  opacity: 1;
+  color: #9873FF;
+}
+main .container .table .table__headings .table__sort-methods.active img {
+  transform: rotate(180deg);
+}
+main .container .table .table__content {
+  margin: 8px 0 40px 0;
+  background: #fff;
+}
+main .container .table .table__content .loading__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 300px;
+}
+main .container .table .table__content .client {
+  box-sizing: border-box;
+  min-height: 55px;
+  border-bottom: 1px solid #c8c5d1;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 8.33% 23.33% 18.33% 18.33% 13.33% 16.67%;
+}
+main .container .table .table__content .client .client__id {
+  color: #B0B0B0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+}
+main .container .table .table__content .client .client__full-name {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #333333;
+}
+main .container .table .table__content .client .client__date {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #333333;
+}
+main .container .table .table__content .client .client__date .client__date-time {
+  color: #B0B0B0;
+}
+main .container .table .table__content .client .client__contacts {
+  padding: 0;
+  display: flex;
+  max-width: 115px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: start;
+  align-items: flex-end;
+}
+main .container .table .table__content .client .client__contacts .showAllContactsBtn {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 11px;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  background: none;
+  border: 1px solid #9873FF;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+main .container .table .table__content .client .client__contacts a {
+  padding: 7px 7px 0 0;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  opacity: 0.8;
+}
+main .container .table .table__content .client .client__contacts a .tip {
+  top: -130%;
+}
+main .container .table .table__content .client .client__contacts a:hover {
+  opacity: 1;
+}
+main .container .table .table__content .client .client__contacts a:hover .tip {
+  visibility: visible;
+  opacity: 1;
+}
+main .container .table .table__content .client .client__doings {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+main .container .table .table__content .client .client__doings > button {
+  background: 0;
+  border: none;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+}
+main .container .table .table__content .client .client__doings .client__edit-button:hover {
+  color: #9873FF;
+}
+main .container .table .table__content .client .client__doings .client__delete-button:hover {
+  color: #F06A4D;
+}
+main .container .client__add-button {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 216px;
+  padding: 10px;
+  margin: 0 auto;
+  background: 0;
+  border: 1px solid #9873FF;
+  color: #9873FF;
+}
+main .container .client__add-button:hover {
+  cursor: pointer;
+}
+
+.confirm-delete {
+  position: fixed;
+  z-index: -1;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  transition: 0.3s all linear;
+}
+.confirm-delete .confirm-delete__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(112%, -50%);
+  width: 450px;
+  height: 215px;
+  text-align: center;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.15);
+  transition: 0.5s all linear;
+}
+.confirm-delete .confirm-delete__content h5 {
+  padding: 0;
+  margin: 0;
+  color: #333;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+}
+.confirm-delete .confirm-delete__content p {
+  padding: 0;
+  margin: 0;
+  color: #333;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  max-width: 230px;
+}
+.confirm-delete .confirm-delete__content .confirm-delete__btn {
+  background: #9873FF;
+  color: #fff;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  border: 0;
+  padding: 12px 34px;
+  cursor: pointer;
+}
+.confirm-delete .confirm-delete__content .cancel {
+  text-decoration: underline;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #333;
+  cursor: pointer;
+}
+.confirm-delete.active {
+  z-index: 5;
+  opacity: 1;
+}
+.confirm-delete.active .confirm-delete__content {
+  transform: translate(-50%, -50%);
+}
+
+.main-window {
+  position: fixed;
+  z-index: -1;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  transition: 0.3s all linear;
+}
+.main-window .main-window__content {
+  box-sizing: border-box;
+  width: 450px;
+  min-height: 400px;
+  padding: 20px 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-170%, -50%);
+  background: #FFFFFF;
+  box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.15);
+  transition: 0.4s all linear;
+  scrollbar-width: none;
+}
+.main-window .main-window__content::-webkit-scrollbar {
+  width: 0;
+}
+.main-window .main-window__content h5 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: #333;
+  margin-top: 0;
+}
+.main-window .main-window__content h5 .client-id {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  color: #B0B0B0;
+  line-height: 16px;
+  text-transform: uppercase;
+  margin-left: 9px;
+}
+.main-window .main-window__content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  min-height: 350px;
+}
+.main-window .main-window__content form label {
+  position: relative;
+  width: 100%;
+}
+.main-window .main-window__content form label .form__input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #C8C5D1;
+  padding: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  height: 42px;
+  transition: 0.2s border-color linear;
+}
+.main-window .main-window__content form label .form__input:focus {
+  outline: 0;
+}
+.main-window .main-window__content form label .form__input::-moz-placeholder, .main-window .main-window__content form label .form__input::-webkit-input-placeholder {
+  color: #b0b0b0;
+}
+.main-window .main-window__content form label .form__input.invalid {
+  border-bottom: 1px solid #F06A4D;
+}
+.main-window .main-window__content form label .placeholder {
+  z-index: 6;
+  cursor: text;
+  position: absolute;
+  top: 17px;
+  left: 0px;
+  width: 100%;
+  display: inline;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #b0b0b0;
+  white-space: nowrap;
+  transition: 0.2s all linear;
+}
+.main-window .main-window__content form label .placeholder span {
+  font-weight: bold;
+  color: #9873FF;
+}
+.main-window .main-window__content form label .form__input:focus ~ .placeholder,
+.main-window .main-window__content form label .form__input:not(:placeholder-shown).form__input:not(:focus) ~ .placeholder {
+  top: -8px;
+  font-size: 10px;
+}
+.main-window .main-window__content form label + label {
+  margin-top: 10px;
+}
+.main-window .main-window__content form .contacts {
+  width: 100%;
+}
+.main-window .main-window__content form .contacts .contact {
+  margin: 15px 0;
+  display: flex;
+  height: 37px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.main-window .main-window__content form .contacts .contact select {
+  border: 1px solid #C8C5D1;
+  width: 31.54%;
+  border-radius: 0;
+  background: #E7E5EB;
+}
+.main-window .main-window__content form .contacts .contact input {
+  border: 1px solid #C8C5D1;
+  padding: 0 12px;
+  height: auto;
+  width: 61.54%;
+  border-radius: 0;
+}
+.main-window .main-window__content form .contacts .contact .contact__delete-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #C8C5D1;
+  width: 6.92%;
+  border-radius: 0;
+  cursor: pointer;
+  filter: grayscale(100%);
+  transition: 0.3s all linear;
+  position: relative;
+}
+.main-window .main-window__content form .contacts .contact .contact__delete-button .tip {
+  width: 133px;
+  height: 31px;
+  top: -85%;
+}
+.main-window .main-window__content form .contacts .contact .contact__delete-button:hover {
+  border: 1px solid #F06A4D;
+  filter: grayscale(0);
+  background: #E7E5EB;
+}
+.main-window .main-window__content form .contacts .contact .contact__delete-button:hover .tip {
+  opacity: 1;
+  visibility: visible;
+}
+.main-window .main-window__content form .contacts .contact:first-child {
+  margin-top: 20px;
+}
+.main-window .main-window__content form .contacts .contact:last-child {
+  margin-bottom: 20px;
+}
+.main-window .main-window__content form .contact__add-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  height: 35px;
+  border: 0;
+  cursor: pointer;
+  background: #fff;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: #333;
+}
+.main-window .main-window__content form .contact__add-button img {
+  margin-right: 5px;
+}
+.main-window .main-window__content form .save-button {
+  box-sizing: border-box;
+  padding: 17px 35px;
+  margin: 15px 0;
+  background: #9873FF;
+  border-radius: 0;
+  border: 0;
+  color: #fff;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  cursor: pointer;
+}
+.main-window .main-window__content .cancel, .main-window .main-window__content .client-delete {
+  display: block;
+  max-width: 58px;
+  margin: 0 auto;
+  padding-left: 10px;
+  text-decoration: underline;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #333;
+  cursor: pointer;
+}
+.main-window .main-window__content .client-delete {
+  max-width: 109px;
+}
+.main-window.active {
+  z-index: 5;
+  opacity: 1;
+}
+.main-window.active .main-window__content {
+  transform: translate(-50%, -50%);
+}
+
+footer {
+  background: #CACACA;
+  text-align: center;
+}
+footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+footer ul li + li {
+  margin-left: 10px;
+}
+footer ul li {
+  display: inline-block;
+}
+footer ul li a {
+  color: #777;
+  text-decoration: none;
+}
+footer ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 1441px) and (max-width: 2560px) {
+  .container {
+    max-width: 1440px;
+  }
+}
+@media (max-width: 1440px) {
+  .main-window .main-window__content {
+    max-height: 95%;
+    overflow: scroll;
+    scrollbar-width: none;
+  }
+  .main-window .main-window__content form .contacts .contact .contact__delete-button .tip {
+    width: 83px;
+    height: auto;
+    top: -125%;
+  }
+}
+@media (max-width: 1024px) {
+  .container {
+    max-width: 984px;
+  }
+
+  header {
+    height: 90px;
+  }
+
+  main .container .table .table__content .client, main .container .table .table__headings {
+    grid-template-columns: 12.5% 21.5% 12.5% 12.5% 15% 21%;
+  }
+  main .container .table .table__content .client .client__doings > button {
+    padding: 0;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    max-width: 728px;
+  }
+
+  main .container .table .table__content .client, main .container .table .table__headings {
+    grid-template-columns: 13% 26% 13% 13% 18% 12%;
+  }
+}
+@media (max-width: 425px) {
+  .container {
+    max-width: 400px;
+  }
+
+  header {
+    justify-content: center;
+    height: 20px;
+  }
+  header .logo {
+    font-size: 10px;
+    line-height: 12px;
+    width: 24px;
+    height: 24px;
+  }
+  header input {
+    display: none;
+  }
+
+  main {
+    min-height: calc(100% - 82px);
+  }
+  main .container .table {
+    overflow: scroll;
+  }
+  main .container .table .table__content, main .container .table .table__headings {
+    width: 728px;
+  }
+
+  .confirm-delete .confirm-delete__content, .main-window.active .main-window__content {
+    width: 360px;
+  }
+
+  .close__btn {
+    top: 7px;
+    right: 7px;
+  }
+
+  footer ul li a {
+    font-size: 12px;
+  }
+}
+@media (max-width: 375px) {
+  .container {
+    max-width: 340px;
+  }
+
+  .confirm-delete .confirm-delete__content, .main-window.active .main-window__content {
+    width: 300px;
+  }
+
+  .main-window .main-window__content form .contacts .contact select {
+    width: 47%;
+  }
+  .main-window .main-window__content form .contacts .contact .contact__delete-button {
+    width: 9%;
+  }
+}
+@media (max-width: 320px) {
+  .container {
+    max-width: 300px;
+  }
+
+  .confirm-delete .confirm-delete__content, .main-window.active .main-window__content {
+    width: 290px;
+  }
+
+  .main-window .main-window__content form .contacts .contact select {
+    width: 50%;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

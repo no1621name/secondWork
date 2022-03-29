@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <!-- project styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <title>Crm</title>
+</head>
+
+<body>
+    <header>
+        <span class="logo">skb.</span>
+        <input placeholder="Введите запрос" type="text" name="search" id="searchInput">
+    </header>
+    <main>
+        <div class="container">
+            <h4>Клиенты</h4>
+            <div class="table">
+                <div class="table__headings">
+                    <span class="table__sort-methods active" data-sortType="byID">ID <img src="img/arrow.png"
+                            alt="arrow"> </span>
+                    <span class="table__sort-methods" data-sortType="byFullName">Фамилия Имя Отчество <img
+                            src="img/arrow.png" alt="arrow"> <span class="table__sort-method__type">А-Я</span> </span>
+                    <span class="table__sort-methods" data-sortType="byCreateTime">Дата и время создания <img
+                            src="img/arrow.png" alt="arrow"> </span>
+                    <span class="table__sort-methods" data-sortType="byUpdateTime">Последние изменения <img
+                            src="img/arrow.png" alt="arrow"> </span>
+                    <span>Контакты</span>
+                    <span>Действия</span>
+                </div>
+                <div class="table__content">
+                </div>
+            </div>
+            <button class="client__add-button" id="addClientBtn"><img src="img/addClient.png" alt="addClient">Добавить
+                клиента</button>
+        </div>
+    </main>
+    <section class="confirm-delete close" id="confirmDeleteWindow">
+        <div class="confirm-delete__content">
+            <span class="close__btn close"></span>
+            <h5>Удалить клиента</h5>
+            <p>Вы действительно хотите удалить данного клиента?</p>
+            <div class="warning" id="warning"></div>
+            <button class="confirm-delete__btn" id="confirmDeleteBtn">Удалить</button>
+            <span class="cancel close">Отмена</span>
+        </div>
+    </section>
+    <section class="main-window close" id="mainWimdow">
+        <div class="main-window__content" id="mainWindowContent"></div>
+    </section>
+
+    <!-- info about me -->
+    <footer>
+        <ul>
+            <li>
+                <a href="https://t.me/no1621name">telegram</a>
+            </li>
+            <li>
+                <a href="https://github.com/no1621name">github</a>
+            </li>
+            <li>
+                <a href="https://vk.com/no1621name">vk</a>
+            </li>
+            <li>
+                <a href="#">no1621name@gmail.com</a>
+            </li>
+        </ul>
+    </footer>
+
+    <!-- project scripts -->
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
